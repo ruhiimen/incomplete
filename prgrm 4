@@ -1,0 +1,88 @@
+// PROGRAM: 04
+ // Aim: Write a C program for singly linked list using Stack operation
+ #include<stdio.h>
+#include<stdlib.h>
+ struct node
+{ 
+int data;
+ struct node *next;
+};
+ struct node *sp = NULL;
+ struct node *push(struct node *, int);
+ struct node *pop(struct node *, int *);
+ void display(struct node *);
+ int search(struct node *, int);
+ int main()
+{
+ int opt, data, found;
+ for(;;)
+ { 
+printf("1. Push\n 2. Pop\n 3. Display\n 4. Search\n 5. Exit\n");
+printf("Enter your choice: ");
+ scanf("%d", &opt);
+ switch(opt)
+{
+ case 1:printf("Enter element to insert: ");
+scanf("%d", &data);
+ sp = push(sp, data);
+ break;
+case 2: if (sp == NULL)
+{
+ printf("stack is empty!");
+} 
+else
+ { 
+sp = pop(sp, &data);
+ printf("popped element is : %d\n", data);
+ }
+ break;
+ case 3:display(sp);
+
+break;
+
+
+
+ case 4:
+
+ printf("Enter the element to be searched: ");
+ 
+scanf("%d", &data);
+ 
+found = search(sp, data);
+
+ if (found != 0)
+{ 
+printf("The element %d is present", data);
+
+} 
+else
+ 
+{
+ printf("%d NOT found", data); } break;
+ case 05:exit(0);
+break;
+
+[span_48](start_span)[span_48](end_span)
+
+ } }
+ return 0;
+
+[span_49](start_span)[span_49](end_span) 
+
+} 
+// Function to push an element in a singly linked list
+
+[span_50](start_span)[span_50](end_span) 
+
+struct node *push(struct node *sp, int data)
+
+[span_51](start_span)[span_51](end_span) 
+
+{
+ struct node *temp;
+
+[span_52](start_span)[span_52](end_span) 
+
+temp = (struct node *)malloc(sizeof(struct node));
+
+[span_53](start_span)[span_53](end_span) temp->data = data;[span_54](start_span)[span_54](end_span) temp->next = sp;[span_55](start_span)[span_55](end_span) sp = temp;[span_56](start_span)[span_56](end_span) return sp;[span_57](start_span)[span_57](end_span) } // Function to delete an element in a singly linked list[span_58](start_span)[span_58](end_span)[span_59](start_span)[span_59](end_span) struct node *pop(struct node *sp, int *x)[span_60](start_span)[span_60](end_span) { struct node *temp;[span_61](start_span)[span_61](end_span) if (sp != NULL)[span_62](start_span)[span_62](end_span) { temp = sp;[span_63](start_span)[span_63](end_span) *x = sp->data;[span_64](start_span)[span_64](end_span) sp = sp->next;[span_65](start_span)[span_65](end_span) free(temp);[span_66](start_span)[span_66](end_span) } return sp;[span_67](start_span)[span_67](end_span) } // Function to display an element in a singly linked list[span_68](start_span)[span_68](end_span) void display(struct node *sp)[span_69](start_span)[span_69](end_span) { if (sp == NULL)[span_70](start_span)[span_70](end_span) { printf("stack is empty \n");[span_71](start_span)[span_71](end_span) return;[span_72](start_span)[span_72](end_span) } printf("Stack elements are: \n");[span_73](start_span)[span_73](end_span) while (sp != NULL)[span_74](start_span)[span_74](end_span) { printf("%d \n", sp->data);[span_75](start_span)[span_75](end_span) sp = sp->next;[span_76](start_span)[span_76](end_span) } } // Function to search an element in a singly linked list[span_77](start_span)[span_77](end_span) int search(struct node *sp, int data)[span_78](start_span)[span_78](end_span) { while (sp != NULL)[span_79](start_span)[span_79](end_span) { if (sp->data == data)[span_80](start_span)[span_80](end_span) { return 1;[span_81](start_span)[span_81](end_span) } sp = sp->next;[span_82](start_span)[span_82](end_span) } return 0;[span_83](start_span)[span_83](end_span) } 
